@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
     <!-- Our CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -30,20 +30,11 @@
                         <input type="checkbox" class="form-check-input" name="optradio" v-model="filter1">A-Z
                     </label>
                 </div>
-                <div class="form-check-inline col">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optradio">Option 2
-                    </label>
+                <div class="col">
+                    <button type="button" class="btn btn-primary" @click="shuffle()">Shuffle</button>
                 </div>
-                <div class="form-check-inline col">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optradio">Option 3
-                    </label>
-                </div>
-                <div class="form-check-inline col">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optradio">Option 4
-                    </label>
+                <div class="col">
+                    <button type="button" class="btn btn-primary" @click="reverse()">Reverse</button>
                 </div>
             </div>
             <div class="form-group row">
@@ -58,7 +49,7 @@
 
         <!-- Containers can also be nested -->
         <!-- Results -->
-        <div class="container">
+        <div class="container" v-cloak>
             <!-- Vue gives us this custom element to give us cool list transitions. 
                 This element renders to be another tag, defind by the 'tag' attribute. -->
             <transition-group tag="div" class="row" name="card-list">
@@ -103,8 +94,10 @@
         crossorigin="anonymous"></script>
 
     <!-- Lodash JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+        integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+        crossorigin="anonymous"></script>
+
     <!-- Our JS!! -->
     <script src="script.js"></script>
 </body>

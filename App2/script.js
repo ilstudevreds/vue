@@ -48,7 +48,17 @@ axios({
 
                 // Replace ENTIRE array
                 this.list = temp
-            }, 300)
+            }, 300),
+
+            shuffle() {
+                console.log("shuffle()")
+                this.list = _.shuffle(this.list);
+            },
+
+            reverse() {
+                console.log("reverse()")
+                this.list = _.reverse(this.list);
+            }
         }
     })
 })
