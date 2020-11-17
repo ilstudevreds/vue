@@ -10,6 +10,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -78,11 +81,12 @@
 
 
 
-    <!-- Optional JavaScript -->
+    <!-- Optional JavaScript for Bootstrap components-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -90,10 +94,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-
 
     <!-- AxiosJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
@@ -102,94 +104,9 @@
 
     <!-- Lodash JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
-    <script>
-        // Using axios along with http-server to get out data from data.json
-        // Axios doesn't work with files locally, so we create a mock server and 
-        // use axios to make a HTTP request to it. Since axios is promise-based, we must wait for it
-        // complete the HTTP proccess .then we can we use its response.
-        axios({
-            method: "get",
-            url: "data.json"
-        }).then(response => {
-            // You can find the response in the console
-            console.log(response)
-            window.App = new Vue({
-                el: "#VUEAPP",
-                data() {
-                    return {
-                        cardData: response.data,
-                        list: [],
-                        search: "",
-                        filter1: false,
-                        filter2: false,
-                        filter3: false,
-                        filter4: false,
-                    }
-                },
-                // This function is ran after the HTML elements have been mounted and Vue is done loading
-                mounted() {
-                    this.list = this.cardData
-                },
-                // these methods are connected to there conamed variable. whenever those variables are updated, the corresponding method is ran after.
-                watch: {
-                    search() {
-                        this.computeList()
-                    },
-                    filter1() {
-                        this.computeList()
-                    }
-                },
-                methods: {
-                    // This method utilizes Lodash's debounce() to prevent over rendering from all the animations added into the screen.
-                    // debounce() will wait to run the function until x milliseconds after the last function call.
-                    computeList: _.debounce(function() {
-                        // Filter results
-                        let query = this.search.toLowerCase()
-                        let temp = this.cardData.filter(card => card.title.toLowerCase().includes(query))
-                        // A-Z
-                        if (this.filter1) {
-                            temp.sort((a,b)=> (a.title > b.title) ? 1 : -1)
-                        }
-
-                        // Replace ENTIRE array
-                        this.list = temp
-                    },300)
-                }
-            })
-        })
-    </script>
-    <style>
-        /* This applies to any element with v-cloak as an explicit attribute, which will be turned off by Vue when the application is mounted */
-        [v-cloak] {
-            display: hidden;
-        }
-
-        /* Wanted a proper margin around the individual cards, they look a little better this way */
-        .card {
-            margin-bottom: 10px;
-        }
-
-        /* TRANSITION-GROUP CSS */
-        /* For more info on this go to https://vuejs.org/v2/guide/transitions.html */
-
-        /* Defines movement when cards enter list and when they move to there new position */
-        .card-list-enter-active,
-        .card-list-move {
-            transition: all .8s ease-in;
-        }
-
-        /* Defines movement when cards leave list,  */
-        .card-list-leave-active {
-            transition: all .5s ease-out;
-            position: absolute;
-        }
-
-        /* Defines beginning and final states */
-        .card-list-enter,
-        .card-list-leave-to {
-            opacity: 0;
-        }
-    </style>
+    
+    <!-- Our JS!! -->
+    <script src="script.js"></script>
 </body>
 
 </html>

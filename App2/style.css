@@ -1,0 +1,30 @@
+        /* This applies to any element with v-cloak as an explicit attribute, which will be turned off by Vue when the application is mounted */
+        [v-cloak] {
+            display: hidden;
+        }
+
+        /* Wanted a proper margin around the individual cards, they look a little better this way */
+        .card {
+            margin-bottom: 10px;
+        }
+
+        /* TRANSITION-GROUP CSS */
+        /* For more info on this go to https://vuejs.org/v2/guide/transitions.html */
+
+        /* Defines movement when cards enter list and when they move to there new position */
+        .card-list-enter-active,
+        .card-list-move {
+            transition: all .8s ease-in;
+        }
+
+        /* Defines movement when cards leave list,  */
+        .card-list-leave-active {
+            transition: all .5s ease-out;
+            position: absolute;
+        }
+
+        /* Defines beginning and final states */
+        .card-list-enter,
+        .card-list-leave-to {
+            opacity: 0;
+        }
