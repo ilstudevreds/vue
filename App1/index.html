@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+    <!-- lodash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    
+    <!-- MomentJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>VueJS Demo Application</title>
+</head>
+
+<body>
+    <div id="vue-app" class="container">
+
+        <h1>{{title}}</h1>
+
+        <p>This code serves as an introduction the VueJS framework! VueJS is a set of JS packages that make it
+            relatively
+            easy to add interactivity and reactiabililty to you webpage.
+        </p>
+
+        <p>
+            <b>Time :</b>
+            &nbsp;
+            <transition name="time-update" mode="out-in">
+                <span class="TIME" :key="time">
+                    {{time | stopwatchTime}}s
+                    <!-- {{time/100}} -->
+                </span>
+            </transition>
+        </p>
+
+        <p>
+            {{moment().month(3).format("MM-DD-YYYY")}}
+        </p>
+
+        <p>
+            {{numOfRecords}}
+        </p>
+
+        <div>
+            <button v-if="!interval" @click="startAddingInterval();">Start Timer</button>
+            <button v-if="!!interval" @click="stopAddingInterval();">Stop Timer</button>
+            <button @click="addBulletPoint();">Add {{(bullets.length > 1 ? "another " : " ")}} record</button>
+            <button @click="clearBulletPoints();">Clear records</button>
+            <button @click="shuffle();">Shuffle records</button>
+        </div>
+        <br>
+        <div>
+            Size: {{numOfRecords}}<br />
+            Even or Odd: {{evenOrOdd}}
+            <transition-group name="list" tag="ul">
+                <li v-for="a,b in bullets" v-bind:key="">
+                    Bullet Point: saved@{{a}}s
+                    <button @click="removeMe(b);">Remove</button>
+                </li>
+            </transition-group>
+        </div>
+
+
+    </div>
+    <script>
+        const TICK = 100;
+        var app = new Vue({
+            el: '#vue-app',
+            data: {
+                title: "VueJS Demo Application",
+                bullets: [0],
+                time: 0,
+                interval: null,
+            },
+            mounted: function () {
+                console.log("Hello World!")
+                // this.startAddingInterval();
+                console.log("We are mounted!")
+            },
+            
+            computed: {
+                evenOrOdd() {
+                    // return (this.bullets.length % 2) > 0 ? "Odd" : "Even"
+                    return [1,2,3,4,5,6]
+                },
+                numOfRecords() {
+                    return this.bullets.length
+                },
+            },
+
+            filters: {
+                filterTime: function (time) {
+                    return time / 10;
+                },
+
+                stopwatchTime: function (time) {
+                    // convert to seconds using TICK
+                    return moment().hour(0).minute(0).second(0).millisecond(time * 100).format("HH:mm:ss.SS")
+
+                }
+            },
+
+            methods: {
+                addOne() {
+                    this.time++
+                },
+                stopAddingInterval() {
+                    console.log("stopAddingInterval() ")
+                    clearInterval(this.interval)
+                    this.interval = null
+                },
+                clearBulletPoints() {
+                    console.log("clearBulletPoints()")
+                    this.bullets = [0];
+                },
+                startAddingInterval() {
+                    console.log("startAddingInterval() ")
+                    this.interval = setInterval(this.addOne, 100)
+                },
+                addBulletPoint() {
+                    console.log("addBulletPoint() ")
+                    this.bullets.push(this.time);
+                    // this.bullets[5] = this.time;
+                },
+                removeMe(i) {
+                    console.log("removeMe() ")
+                    this.bullets.splice(i, 1);
+                },
+                shuffle() {
+                    this.bullets = _.shuffle(this.bullets);
+                }
+            },
+        })
+    </script>
+    <style>
+        button:hover {
+            opacity: .7;
+        }
+
+        .TIME {
+            font-size: 300%;
+        }
+
+        .list-move {
+            transition: transform 1s;
+        }
+
+        .list-enter-active,
+        .list-leave-active {
+            transition: 300ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+            transition-property: opacity, transform;
+        }
+
+        .list-enter {
+            opacity: 0;
+            transform: translateX(50px) scaleY(0.5);
+        }
+
+        .list-enter-to {
+            opacity: 1;
+            transform: translateX(0) scaleY(1);
+        }
+
+        .list-leave-active {
+            position: absolute;
+        }
+
+        .list-leave-to {
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: center top;
+        }
+    </style>
+</body>
+
+</html>

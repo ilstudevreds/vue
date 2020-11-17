@@ -1,0 +1,86 @@
+[
+    {
+        "title": "Googles Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.google.com",
+        "linkText": "google"
+    },
+    {
+        "title": "Yahoo's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.yahoo.com",
+        "linkText": "yahoo"
+    },
+    {
+        "title": "Bing's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.bing.com",
+        "linkText": "bing"
+    },
+    {
+        "title": "DuckDuckGo's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.duckduckgo.com",
+        "linkText": "DuckDuckGo"
+    },
+    {
+        "title": "Twitter's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.twitter.com",
+        "linkText": "twitter"
+    },
+    {
+        "title": "Facebook's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.facebook.com",
+        "linkText": "facebook"
+    },
+    {
+        "title": "Twitch's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.twitch.com",
+        "linkText": "twitch"
+    },
+    {
+        "title": "Reddit's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.reddit.com",
+        "linkText": "reddit"
+    },
+    {
+        "title": "Squarespace's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.squarespace.com",
+        "linkText": "squarespace"
+    },
+    {
+        "title": "Youtube's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.youtube.com",
+        "linkText": "youtube"
+    },
+    {
+        "title": "Vimeo's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.vimeo.com",
+        "linkText": "vimeo"
+    },
+    {
+        "title": "Imgur's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.imgur.com",
+        "linkText": "imgur"
+    },
+    {
+        "title": "ESPN's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.espn.com",
+        "linkText": "ESPN"
+    },
+    {
+        "title": "Target's Card",
+        "text": "Some quick example text to build on the card title card's content.",
+        "link": "https://www.target.com",
+        "linkText": "target"
+    }
+]
