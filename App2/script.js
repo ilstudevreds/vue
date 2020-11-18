@@ -40,7 +40,13 @@ axios({
             computeList: _.debounce(function () {
                 // Filter results
                 let query = this.search.toLowerCase()
-                let temp = this.cardData.filter(card => card.title.toLowerCase().includes(query))
+                let temp = this.cardData.filter(card => {
+                    for (c in card) 
+                        if (card[c].toLowerCase().includes(query))
+                            return true
+                    
+                    return false
+                })
                 // A-Z
                 if (this.filter1) {
                     temp.sort((a, b) => (a.title > b.title) ? 1 : -1)

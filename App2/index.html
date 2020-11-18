@@ -24,26 +24,13 @@
         <p>Below is an example of what you can do with Vue list-transitions and a computed value</p>
 
         <form>
-            <div class="form-group row">
-                <div class="form-check-inline col">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="optradio" v-model="filter1">A-Z
-                    </label>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-primary" @click="shuffle()">Shuffle</button>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-primary" @click="reverse()">Reverse</button>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-2">
-                    <label for="searchBox" class="col-form-label"> Filter Results:</label>
-                </div>
-                <div class="col-10">
-                    <input id="searchBox" type="text" class="form-control" v-model="search">
-                </div>
+            <div class="form-group form-inline">
+                <input id="searchBox" type="text" class="col-6 form-control m-2 ml-3 mr-4" placeholder="Filter Results" aria-label="Search bar" v-model="search">
+                <label class="form-check-label m-2 ml-3 mr-4">
+                    <input type="checkbox" class="form-check-input" name="optradio" v-model="filter1">A-Z
+                </label>
+                <button type="button" class="btn btn-primary m-2 ml-3 mr-4" @click="shuffle()">Shuffle</button>
+                <button type="button" class="btn btn-primary m-2 ml-3 mr-4" @click="reverse()">Reverse</button>
             </div>
         </form>
 
